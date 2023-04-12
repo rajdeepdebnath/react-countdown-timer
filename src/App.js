@@ -20,7 +20,8 @@ function App() {
   };
 
   const setStart = () => {
-    setTimeLeft(min * 60 + sec);
+    if (intervalCtrl) clearInterval(intervalCtrl);
+    setTimeLeft(+min * 60 + +sec);
     let i = setInterval(() => countDown(), 1000);
     console.log(i);
     setIntervalCtrl(i);
