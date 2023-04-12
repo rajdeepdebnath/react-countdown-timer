@@ -15,6 +15,10 @@ function App() {
       console.log(`t: ${+t}`);
       let m = Math.floor(+t / 60);
       let s = +t - m * 60 - 1;
+      if (s === -1) {
+        s = 59;
+        return (m - 1) * 60 + s;
+      }
       return m * 60 + s;
     });
   };
@@ -49,6 +53,10 @@ function App() {
     if (timeleft > 0) {
       let m = Math.floor(+timeleft / 60);
       let s = +timeleft - m * 60 - 1;
+      if (s === -1) {
+        s = 59;
+        m -= 1;
+      }
       let d = `${m > 9 ? m : "0" + m}:${s > 9 ? s : "0" + s}`;
       console.log(`timeLeft: ${+timeleft},m:${m},s:${s},displayTime:${d}`);
       setDisplayTime(d);
